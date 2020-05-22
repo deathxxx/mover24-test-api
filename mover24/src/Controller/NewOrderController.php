@@ -34,7 +34,7 @@ class NewOrderController extends AbstractController
     public function test()
     {
         $response = new Response(
-            'hi3435',
+            'test ok',
             Response::HTTP_OK,
             ['content-type' => 'text/html']
         );
@@ -48,7 +48,6 @@ class NewOrderController extends AbstractController
      */
     public function new(Request $request)
     {
-        // creates a task object and initializes some data for this example
         $delivery = new Delivery();
         $delivery->setNameV("test"); // имя покупателя
         $delivery->setSurname("surname"); // фамилия (необязательный)
@@ -112,8 +111,6 @@ class NewOrderController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
             $delivery = $form->getData();
 
             $user = 'user';
@@ -130,7 +127,7 @@ class NewOrderController extends AbstractController
 
         return $this->render('new_order/delivery.twig', [
             'form' => $form->createView(),
-            'controller_name' => 'New Delivery',
+            'controller_name' => 'Add new Delivery',
         ]);
     }
 
